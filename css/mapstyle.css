@@ -1,0 +1,69 @@
+body { 
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; }
+#mymap { 
+    position:absolute; 
+    width:70%;
+    height:100% }
+
+.popup {
+    text-align:center;
+     font-family: 'Montserrat', sans-serif;
+    }
+.popup .slideshow .image        { display:none; }
+.popup .slideshow .image.active { display:block; }
+.popup .slideshow img {
+    width:100%;
+    }
+.popup .slideshow .caption {
+    background:#eee;
+    padding:10px;
+    }
+.popup .cycle {
+    padding:10px 0 20px;
+    }
+.popup .cycle a.prev { float:left; }
+.popup .cycle a.next { float:right; }
+
+.sidebar {
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    background-color: white;
+    right: 0;
+    overflow:scroll;
+    display: block;
+    color: #061C2B;
+    align-content:center;
+    justify-content: space-around;
+    }
+  h2{
+    font-size:24px;
+    margin-left:20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    }
+  h3{
+    padding: 15px;
+    font-size: 20px;
+    }
+  p{
+    margin-left:20px;
+    margin-right: 20px;  
+    }
+  .button{
+    display:block;
+    border-radius:5px;
+    text-decoration:none;
+    text-align:center;
+    background-color: #161925;
+    color: white;
+    padding: 15px;
+    margin:10px;
+  }
+  .button:hover {
+    background-color: #8EA8C3;
+    color: black;
+  }
+  

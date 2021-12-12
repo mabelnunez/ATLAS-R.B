@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset=utf-8 />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/mapstyle.css" media="screen">
+    <title>ATLAS R.B</title>    
+    </head>
+    
+</head>
+    <body>
+    <!-- Barra lateral informativa-->  
+    <div class="sidebar">
+        <div class="sidebar-content flex-center">
+        <h2>Atlas Colaborativo de la Reserva de la Biosfera</h2>
+                                            <p>Este Atlas es parte de las iniciativas de Biogeoart y pretende poner el valor el territorio que habitamos por medio de mapeos colectivos.
+                                              Estos mapeos colabotivos se concentran en la quinta región y en la Reserva de Biosfera La Campana - Peñuelas.
+                                            </p>
+                
+                   <h3>Colabora con Nosotros</h3>
+                                            <p>Se parte de Nuestro Atlas, colabora con nosotros por medio de los siguientes formularios: 
+                                                <a href="https://forms.gle/5ve8F59taEufFj6Q8" class="button">Problema Ambiental</a>
+                                                <a href="https://forms.gle/yJ4jWecRyC9i1o7w6" class="button">Prácticas Ecológicas</a>
+                                                <a href="https://forms.gle/8xLYsgakJfx3KrAz5" class="button">Registros de Flora y Fauna</a></p>
+                    
+    
+        </div>
+    </div>
+    <!-- Contendor de mi mapa-->
+    <div id='mymap'></div>	
+    
+        
+    <!-- jQuery es requerido para esto: -->
+    <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+    <script>
+        L.mapbox.accessToken = 'pk.eyJ1IjoibWFiZWxpbmUiLCJhIjoiY2twcTF4dGlpMGx0OTJvcWp1Mmh3N2ppYSJ9.ObIvKPSIMpmRdjZUWrOq_A';
+    
+        
+    //Crear Capa de información del mapa    
+    var map = L.mapbox.map('mymap')
+     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9'));
+    
+    var myLayer = L.mapbox.featureLayer().addTo(map);
+    
+    
+    //agregar puntos georeferenciados a la capa del mapa    
+    var geoJson = {
+      type: 'FeatureCollection',
+      features: [{
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.45276965,-33.04047705]},
+          "properties": {
+              'title': 'ONG Pulmón Verde',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+    
+              // Almacenar la url de la imagen y su descripcion en un array
+              'images': [
+                             ['https://scontent.fscl18-1.fna.fbcdn.net/v/t31.18172-8/22219647_533717900310260_542146690417663768_o.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=gxM2Fz8syVcAX8avjGC&_nc_ht=scontent.fscl18-1.fna&oh=196dc10548dfc83b39df6e871e1716d0&oe=61CC6293','ONG Pulmon Verde - Comunidad ambientalista de la comuna de Quilpue (esta no es una ONG, sino que comprende a las personas naturales que participan).'],
+                            
+                ['https://scontent.fscl18-1.fna.fbcdn.net/v/t1.6435-9/53873368_844616472553733_8936352064091455488_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=973b4a&_nc_ohc=JEi4LLJAMXsAX_vrIhq&_nc_ht=scontent.fscl18-1.fna&oh=ed8f8a8b7fa6518251324f42c5af4c52&oe=61CF47DE','La organización ha llevado un proceso de recuperación del bosque esclerofilo en el sector del Fundo El Carmen, comuna de Quilpué.'],
+                      
+              ]
+          }
+      }, {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.63460451,-33.04612995]},
+          "properties": {
+              'title': 'Agrupación por un Parque en Camino Cintura',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://scontent.fscl18-1.fna.fbcdn.net/v/t1.6435-9/72725345_3039844622709277_9190276723973816320_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=973b4a&_nc_ohc=XYRPbrA1-XkAX-AXJtH&_nc_ht=scontent.fscl18-1.fna&oh=31edb1d84deece4999a9bd646800d94e&oe=61CE3A35','Recuperación de la biodiversidad de la Quebrada San Agustín, Valparaíso.'],
+                ['https://parquecintura.files.wordpress.com/2020/02/37224596_2279396195420794_8615704855337500672_o-3.jpg?w=777','Organizacion que busca construir un Parque Urbano Natural,  basada en el trabajo colectivo y comunitario, la organización busca una transformación de la relación entre naturaleza-cultura.']
+                
+              ]
+    
+          }
+      },
+                             {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.06544836,-32.92927177]},
+          "properties": {
+              'title': 'Fundación Senderos de Chile',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://static.wixstatic.com/media/d4280c_283b082e0501441f9d3c782a0aac8114~mv2.png/v1/fill/w_168,h_49,al_c,q_85,usm_0.66_1.00_0.01/Logo%20Sendero%20de%20Chile%20vector%20editado.webp','Fundación Senderos de Chile, comunidad local del sector de Ocoa.'],
+                ['https://static.wixstatic.com/media/d4280c_7f171e2e69524869bab180a049fad399~mv2_d_2550_1530_s_2.jpg/v1/fill/w_820,h_492,al_c,q_85,usm_0.66_1.00_0.01/d4280c_7f171e2e69524869bab180a049fad399~mv2_d_2550_1530_s_2.webp','La Fundacion Sendero de Chile, posee diversas actividades de vinculacion de la comunidad con la Reserva de la Biosfera, entre ellas se destaca la actividad de exploracion de un bellotal y relatos de un tesoro de los jesuitas en el  sector de Ocoa.']
+               ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-80.0,-33.0]},
+          "properties": {
+              'title': 'Protección a la Población, Flora y Fauna del Archipiélago de Juan Fernández',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://www.masnoticia.cl/wp-content/uploads/2020/01/juan-fernandez-brigada-de-conaf-inicio-labores-para-proteger-a-la-poblacion-flora-y-fauna-05.jpg','La Corporación Nacional Forestal (CONAF) conforma una brigada de prevención y combate de incendios forestales en la zona. Esta unidad terrestre fue denominada Chonta en homenaje a la palma endémica de la isla.'],
+                ['https://www.masnoticia.cl/wp-content/uploads/2020/01/juan-fernandez-brigada-de-conaf-inicio-labores-para-proteger-a-la-poblacion-flora-y-fauna-02-768x513.jpg','La labor de la brigada Chonta se concentra en cortar la continuidad de la vegetación en puntos vulnerables y otros cercanos a infraestructura crítica, tales como fuentes de agua potable, líneas de alta tensión y el centro autorizado de acopio de basura.']
+                
+              ]
+    
+          }
+      },
+                             {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.60079058,-33.62273176]},
+          "properties": {
+              'title': 'Museo de Historia Natural e Historico de San Antonio',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'monument',
+              'marker-size': 'large',
+              'images': [
+                ['https://scontent.fscl18-1.fna.fbcdn.net/v/t1.6435-9/121338149_3345611302186019_7460477905901085456_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=973b4a&_nc_ohc=AXmrfLs6BHMAX8TgA1P&_nc_ht=scontent.fscl18-1.fna&oh=f0d0fc715c534664548f7b3767129a56&oe=61D01A10','El Museo de Historia Natural e Histórico de San Antonio “MUSA” es una institución municipal de carácter permanente, abierta al público, sin fines de lucro, que conserva, exhibe, investiga, documenta, educa y divulga el patrimonio cultural y natural de la comuna y provincia de San Antonio.'],
+                ['https://scontent.fscl18-1.fna.fbcdn.net/v/t39.30808-6/215924760_4081541295259679_7413485853290703418_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=973b4a&_nc_ohc=3shxEsnpihkAX9mjaNX&_nc_ht=scontent.fscl18-1.fna&oh=45e5bec1280417fec46ef92951cc4a94&oe=61AD68EB','Sus amplias áreas verdes de casi 3, 5 hectáreas de superficie son transformadas bajo la creación y dirección del museo en un Jardín Botánico, con la plantación y reforestación de más de 3.000 ejemplares de árboles y arbustos nativos que son plantados con la colaboración de la entusiasta de la comunidad.']
+               ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.42540212,-33.07677656]},
+          "properties": {
+              'title': 'Conservación Parque Natural Cerro Los Pinos',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://scontent.fscl18-1.fna.fbcdn.net/v/t39.30808-6/225411710_1993086710839895_5146485630218593581_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=973b4a&_nc_ohc=XuBbtB4mHKgAX-jLCk1&_nc_ht=scontent.fscl18-1.fna&oh=bc5235b9f1b1ebc5031a86b1c9af282b&oe=61AD9879','Movimiento que busca el acercamiento, el cuidado, la proteccion y preservacion de nuestro Bosque Esclerofilo, ubicado en sector Los Pinos, Quilpue.'],
+                ['https://scontent.fscl18-1.fna.fbcdn.net/v/t39.30808-6/225449066_1993086724173227_959352864604104363_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=973b4a&_nc_ohc=RbyYE4nuODIAX8ylibe&_nc_ht=scontent.fscl18-1.fna&oh=324df2d58a823bc273996f3662598480&oe=61AE0F74','Entre sus practicas estan la educación ambiental con comunidades y jovenes, la paralizacion de obras de infraestructura para la extracción de recursos naturales, y la restauración de ecosistemas degradados, entre otras.']
+               ]
+    
+          }
+      },				 
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.52215,-32.99226]},
+          "properties": {
+              'title': 'Organizacion Quebrada Viva',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+               ['https://filesedc.com/uploads//other/2018/12/1200/el-boldo-es-una-planta-medicinal-de-origen-chileno.jpg','Organización para la conservación del medioambiente, la cual quiere poner en valor la flora nativa, de distintas áreas de la Reserva de la Biosfera la Campana - Peñuelas.'],
+                ['https://codexverde.cl/wp-content/uploads/2021/06/kkkkk-min.jpg','por medio de salidas a terreno se hacen catastros específicos de especies con fotografías y descripciones mediante bibliografía y consulta a expertos, se estudia y difunde información a la comunidad. Además de hacer Arborizaciones con alianza INJUV.']
+               ]
+    
+          }
+      },
+            
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.52366882,-33.15258753]},
+          "properties": {
+              'title': 'Vive tus Parques',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://www.conaf.cl/wp-content/uploads/2018/07/VTP-RNLP330.jpg','Una instancia que nace a partir del convenio de cooperación entre INJUV-CONAF, que busca  fomentar la participación social de jóvenes  a través de una metodología de voluntariado ambiental.'],
+                ['https://www.conaf.cl/wp-content/files_mf/cache/th_4fdefb5842aa2dc68092ca1241ed9f5d_VTP-RNLP200.jpg','Su trabajo les permita mejorar las áreas de uso público de La Reserva Nacional Lago Peñuelas.']
+                
+              ]
+    
+          }
+      },
+                {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.62382564,-33.60759513]},
+          "properties": {
+              'title': 'Ojos de Mar',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://ojosdemar.cl/wp-content/uploads/2020/12/DSC_0816-min-scaled.jpeg','Organización de Voluntarios \"Ojos de Mar\" en plan de acción para detener la inminente destrucción del Humedal y Playa de Llolleo por parte de la Empresa Portuaria de San Antonio.'],
+                ['https://ojosdemar.cl/wp-content/uploads/2020/10/IMG_7413-EFFECTS-scaled.jpg','Se han realizado una serie de trabajos participativos para la recuperación de estos espacios, que estaban siendo fuertemente degradados por la influencia portuaria sobre el humedal, ya que comparten territorio con una proximidad de metros de distancia.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.08412554,-32.98596466]},
+          "properties": {
+              'title': 'Vive tus Parques',
+                        'category': 'Práctica Ecológica',
+              'marker-color': '#008000',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://lh3.googleusercontent.com/proxy/MVv0Ga5bjtXm1faMlyrlb2t6WfHq56q_7HQ-vz0kuOQCAJamcdUY3-kjdeV6fxzTN2KW-JBMVUk3wiN83lJNNnvWM1CZMXMhYeryo-NGmxfijAO7XY5tAeK_4Wb0_SjyAONKs-nvyxRQjkiKJPHr-UZrm388XXor0Prb4neI','“Vive tus Parques” es un programa del Instituto Nacional de la Juventud INJUV en convenio con la Corporación Nacional Forestal CONAF.'],
+                ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxSbbnfiI5-LKBFJjlgDiJRoW4uZgxaG-qL6DhfQHnRDzLkc1rtYJceMz4XEBPMpa27mY&usqp=CAU','Más de 40 jóvenes de distintos puntos del país y del extranjero que realizaron trabajos de mantenimiento a las instalaciones del Parque Nacional La Campana']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.6681633,-33.10139803]},
+          "properties": {
+              'title': 'Degradación del Humedal El Sauce',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#3498DB',
+              'marker-symbol': 'wetland',
+              'marker-size': 'large',
+              'images': [
+                ['https://uplatv.cl/web/wp-content/uploads/2019/06/2019-humedal-el-sauce.jpg','Degradación del Humedal El Sauce debido a la contaminación de sus aguas y a su vez por los asentamiento irregulares.'],
+                ['https://www.upla.cl/noticias/wp-content/uploads/2019/07/estero_-las-cenizas.jpg','Al parecer, el mal manejo de la planta de tratamiento de aguas servidas de Placilla, además de falta de alcantarillados locales, provoca la degradación del humedal.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.66053,-33.10018]},
+          "properties": {
+              'title': 'Amenaza a la Preservación del Humedal El Criquet',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#3498DB',
+              'marker-symbol': 'wetland',
+              'marker-size': 'large',
+              'images': [
+                ['http://4.bp.blogspot.com/-TpQ4Q-DIA7k/U4zMaGyGL8I/AAAAAAAAFdo/RTPtjLfZeOQ/s1600/SAM_0812.JPG','Actualmente el humedal "El Criquet" se encuentra afectado por una notable baja en sus aguas.'],
+                ['http://1.bp.blogspot.com/-AxP71nDWgOo/U4zMYiu8vFI/AAAAAAAAFdg/nwm0FcJD-k4/s1600/SAM_0810.JPG','El humedal se ve afectado por la sequia actual de la zona, además, el humedal se ve amenazado por un proyecto de Terminal Agricola que pretende instalarse en sus cercanias.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.4187169,-33.02766759]},
+          "properties": {
+              'title': 'Uso no Regulado de Áreas Biodiversas Excluidas de la Zonificación de la R.B',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#FF5733',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['','El área natural correspondiente a los terrenos norte de Quilpué y Villa Alemana presentan, en ciertas zonas al menos, una alta biodiversidad, pudiéndose encontrar especies emblemáticas del bosque esclerófilo y su fauna asociada.'],
+                ['','Este efecto adverso es producido por efecto del uso recreativo diverso y progresivamente más intenso, que va desde senderismo hasta fiestas electrónicas al aire libre.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.04874396,-32.98276784]},
+          "properties": {
+              'title': 'Termoeléctrica Cardones - Polpaico',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#C70039',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://media.elmostrador.cl/2018/10/protesta-468x255.jpg','Afecta en un 100% la biodiversidad de la Reserva de la Biosfera. Si esto sigue todo lo que conocemos como reserva va a desaparecer flora y fauna.'],
+                ['https://cdn.plataformaurbana.cl/wp-content/uploads/2015/02/torres-alta-tension-por-rotholandus-check-descriptions-1000x667.jpg','El proyecto Cardones - Polpaico es un tremendo daño a nuestra flora, fauna y recursos naturales. La biodiversidad se verá extinta si el proyecto sigue en pie.  Las comunas más cercanas al proyecto ya se ven dañadas con el inicio del proyecto.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.211987,-33.1037595]},
+          "properties": {
+              'title': 'Compra y Venta de Parccelas Agrícolas',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#C70039',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['https://www.ccespana.cl/ws/image.php?img=https%3A%2F%2Fmedia.doomos.com%2Fimage%2FCL%2F128%2F6047444a0bc09.jpg','Muchas familias han decidido vender terrenos que adquirieron en la reforma agraria por falta de apoyo estatal en el manejo de los terrenos y la actividad agrícola. Ahora eso se acentúa con la escasez hídrica'],
+                ['https://www.ccespana.cl/ws/image.php?img=https%3A%2F%2Fmedia.doomos.com%2Fimage%2FCL%2F177%2F61821d6ce9750.jpg','El aumento de la población, aumento de la contaminación lumínica y ruidos, aumento de especies exóticas, reparto de derechos de agua y mala regulación y uso de ella, contribuyen a este problema.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.07773304,-32.87994621]},
+          "properties": {
+              'title': 'Uso de Cebos con Veneno en Bosques Nativos',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#FF5733',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['','El plan de control de roedores para monocultivo de paltos, utilizan trampas con cebos envenenados en bosque nativo, debido a que la fauna que habita el lugar supuestamente daña la producción de palta'],
+                ['','La empresa agrícola Lomas de Maitenes (Fundo Santa Paulina de Hualcapo) instala trampas con cebos envenenados en todo el perímetro de su plantación, lo que involucra bosque nativo y cursos de agua lo que provoca una gran amenaza a la biodiversidad.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.64839983,-33.04493656]},
+          "properties": {
+              'title': 'Impacto Antrópico en Santuarios de la Naturaleza',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#223b53',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['','El Santuario de la naturaleza Federico Santa María, se encuentra gravemente amenazado debido a su localización  ya que se encuentra prácticamente inmerso en la ciudad de Valparaíso.'],
+                ['','Este se ve afectado por actividades militares, contaminación residual y luminosa, e incendios forestales.']
+                
+              ]
+    
+          }
+      },
+            {
+          type: 'Feature',
+          "geometry": { "type": "Point", "coordinates": [-71.51125858,-32.97471019]},
+          "properties": {
+              'title': 'Aumento de Urbanización Dismminuyendo Espacios Verdes',
+                        'category': 'Problema Ambiental',
+              'marker-color': '#223b53',
+              'marker-symbol': 'natural',
+              'marker-size': 'large',
+              'images': [
+                ['','El aumento de construcción de viviendas ha aumentado en estos años, esto afecta gravemente al  bosque esclerófilo que se encuentra en la zona el cual está disminuyendo cada vez más.'],
+                ['','En la actualidad, producto de los cambios implementados el año 2014 en Plan Regulador Metropolitano de Valparaíso (PREMVAL), este lugar ha pasado a ser zonificado como una zona de expansión urbana  condición que agrava este problema.']
+                
+              ]
+    
+          }
+      }
+      //Agrega una , despues de la llave anterior, luego pega tu código.
+
+        ]
+    };
+    
+    // Agregar pop-up personalizado para cada marcador.
+    myLayer.on('layeradd', function(e) {
+        var marker = e.layer;
+        var feature = marker.feature;
+        var images = feature.properties.images
+        var slideshowContent = '';
+    
+        for(var i = 0; i < images.length; i++) {
+            var img = images[i];
+    
+            slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                                  '<img src="' + img[0] + '" />' +
+                                  '<div class="caption">' + img[1] + '</div>' +
+                                '</div>';
+        }
+    
+        // Crear contenido personalizado para cada pop-up
+        var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
+                                '<h2>' + feature.properties.title + '</h2>' + '<p>' + feature.properties.category + '</p>' +
+                                '<div class="slideshow">' +
+                                    slideshowContent +
+                                '</div>' +
+                                '<div class="cycle">' +
+                                    '<a href="#" class="prev">&laquo; Anterior</a>' +
+                                    '<a href="#" class="next">Siguiente &raquo;</a>' +
+                                '</div>'
+                            '</div>';
+    
+        // referencias: http://leafletjs.com/reference.html#popup
+        marker.bindPopup(popupContent,{
+            closeButton: false,
+            minWidth: 320
+        });
+    });
+    
+    // Agregar caracteristicas al mapa
+    myLayer.setGeoJSON(geoJson);
+    
+    
+    $('#mymap').on('click', '.popup .cycle a', function() {
+        var $slideshow = $('.slideshow'),
+            $newSlide;
+    
+        if ($(this).hasClass('prev')) {
+            $newSlide = $slideshow.find('.active').prev();
+            if ($newSlide.index() < 0) {
+                $newSlide = $('.image').last();
+            }
+        } else {
+            $newSlide = $slideshow.find('.active').next();
+            if ($newSlide.index() < 0) {
+                $newSlide = $('.image').first();
+            }
+        }
+    
+        $slideshow.find('.active').removeClass('active').hide();
+        $newSlide.addClass('active').show();
+        return false;
+    });
+    
+    // Fijar vista del mapa + zoom inicial
+    map.setView([-33.180,-73.872], 6.90);
+    
+    
+    
+    </script>
+    </body>
+</html>        
