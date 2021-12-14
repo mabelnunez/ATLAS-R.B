@@ -14,6 +14,9 @@ Para poder colaborar en ATLAS R.B existe un protocolo para subir nueva informaci
 
 
 
-
+# Atribución
 Prototitpo funcional Atlas R.B, parte del proyecto de titulación de Mabel E. Núñez Tobar.
+
+Para mayor información sobre este proyecto visita el siguiente respositorio: https://wiki.ead.pucv.cl/Representaci%C3%B3n_Cartogr%C3%A1fica_y_Personas
+
 Diciembre 2021.
